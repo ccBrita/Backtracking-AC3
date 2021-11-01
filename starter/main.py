@@ -350,57 +350,10 @@ class Backtracking:
                 if (rb != False):
                     return rb
         return False
-
-    # def consistency(self, grid, var, domain):
-    #     """
-    #     Check the selected variable is consistent with the gird.
-    #     """   
-        
-    #     row = grid.get_cells()[var[0]].copy()
-    #     row.pop(var[1])
-    #     col = []
-    #     for i in range(grid.get_width()):
-    #         if (i != var[0]):
-    #             col.append(grid.get_cells()[i][var[1]])
-    #     block = []
-    #     for i in [[0,1,2], [3,4,5], [6,7,8]]:
-    #         if (var[0] in i):
-    #             for j in [[0,1,2], [3,4,5], [6,7,8]]:
-    #                 if (var[1] in j):
-    #                     for k in i:
-    #                         for l in j:
-    #                             if (var != (k, l)):
-    #                                 block.append(grid.get_cells()[k][l])
-    #                     break            
-    #     consistent = True
-    #     for i in row:
-    #         if (i == domain):
-    #             consistent = False
-    #     for i in col:
-    #         if (i == domain):
-    #             consistent = False
-    #     for i in block:
-    #         if (i == domain):
-    #             consistent = False
-    #     return consistent
         
 
-#file = open('tutorial_problem.txt', 'r')
 file = open('top95.txt', 'r')
 problems = file.readlines()
-# for p in problems:
-#     g = Grid()
-#     g.read_file(p)
-#     arc = AC3()
-#     arc.pre_process_consistency(g)
-#     g.print_domains()
-#     print("Before:")
-#     g.print()
-#     b = Backtracking()
-#     mrv = MRV()
-#     new_g = b.search(g, mrv)
-#     print("MRV:")
-#     new_g.print()
 i = 1
 running_time_mrv = []
 running_time_first_available = []
@@ -426,80 +379,3 @@ for p in problems:
     i += 1
 plotter = PlotResults()
 plotter.plot_results(running_time_mrv, running_time_first_available,"Running Time Backtracking (MRV)", "Running Time Backtracking (FA)", "running_time")
-    # Print the grid on the screen
-    # print('Puzzle')
-    # g.print()
-
-    # # Print the domains of all variables
-    # print('Domains of Variables')
-    # g.print_domains()
-    # print()
-
-    # # Iterate over domain values
-    # for i in range(g.get_width()):
-    #     for j in range(g.get_width()):
-
-    #         print('Domain of ', i, j, ': ', g.get_cells()[i][j])
-
-    #         for d in g.get_cells()[i][j]:
-    #             print(d, end=' ')
-    #         print()
-
-    # # Make a copy of a grid
-    # copy_g = g.copy()
-
-    # print('Copy (copy_g): ')
-    # copy_g.print()
-    # print()
-
-    # print('Original (g): ')
-    # g.print()
-    # print()
-
-    # # Removing 2 from the domain of the variable in the first row and second column
-    # copy_g.get_cells()[0][1] = copy_g.get_cells()[0][1].replace('2', '')
-
-    # # The domain (0, 1) of copy_g shouldn't have 2 (first list, second element)
-    # print('copy_g')
-    # copy_g.print_domains()
-    # print()
-
-    # # The domain of variable g shouldn't have changed though
-    # print('g')
-    # g.print_domains()
-    # print()
-
-    # # Instance of AC3 Object
-    # ac3 = AC3()
-
-    # # Making all variables in the first row arc consistent with (0, 0), whose value is 4
-    # variables_assigned, failure = ac3.remove_domain_row(g, 0, 0)
-
-    # # The domain of all variables in the first row must not have 4
-    # print('Removed all 4s from the first row')
-    # g.print_domains()
-
-    # # variables_assigned contains all variables whose domain reduced to size 1 in the remove_domain_row opeation
-    # print('Variables that were assigned by remove_domain_row: ', variables_assigned)
-
-    # # failture returns True if any of the variables in the row were reduced to size 0
-    # print('Failure: ', failure)
-    # print()
-
-    # # Making all variables in the first column arc consistent with (0, 0), whose value is 4
-    # variables_assigned, failure = ac3.remove_domain_column(g, 0, 0)
-
-    # # The domain of all variables in the first column must not have 4
-    # print('Removed all 4s from the first column')
-    # g.print_domains()
-    # print()
-
-    # # Making all variables in the first unit arc consistent with (0, 0), whose value is 4
-    # variables_assigned, failure = ac3.remove_domain_unit(g, 0, 0)
-
-    # # The domain of all variables in the first column must not have 4
-    # print('Removed all 4s from the first unit')
-    # g.print_domains()
-    # print()
-
-
